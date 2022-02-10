@@ -34,23 +34,24 @@
                 <h1> Cadastre um novo veículo </h1>
             </div>
         </div>
-        <form>
+        <form action="{{route('veiculo.store')}}" method="POST">
+            @csrf
             <div class="row col-12 col-md-10 col-lg-7 col-xl-6">
                 <div class="col-12 col-md-6">
                     <label for="placa" class="form-label">Placa</label>
-                    <input type="text" id="placa" class="form-control mixed" maxlength="7">
+                    <input type="text" id="placa" name="placa" class="form-control plate" maxlength="7">
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="marca" class="form-label">Marca</label>
-                    <input type="text" id="marca" class="form-control" required>
+                    <input type="text" id="marca" name="marca" class="form-control" required>
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="modelo" class="form-label">Modelo</label>
-                    <input type="text" id="modelo" class="form-control" required>
+                    <input type="text" id="modelo" name="modelo" class="form-control" required>
                 </div>
                 <div class="col-12 col-md-6">
                     <label for="valorvenda" class="form-label">Valor de Venda</label>
-                    <input type="text" class="form-control money" required>
+                    <input type="text" name="valor_venda" class="form-control money" required>
                 </div>
             </div>
             <div class="row g-12 mt-3">
@@ -67,7 +68,7 @@
     <script>
         $(function(){
             $('.money').mask('000.000.000.000.000,00', {reverse: true});
-            $('.mixed').mask('SSS-0A00');
+            $('.plate').mask('SSS-0A00');
           });
     </script>
 </body>
