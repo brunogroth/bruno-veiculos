@@ -20,3 +20,5 @@ Route::get('/', function () {
 Route::get('/veiculo/create', [App\Http\Controllers\VeiculoController::class, 'create'])->name('veiculo.create');
 
 Route::post('/veiculo/store', [App\Http\Controllers\VeiculoController::class, 'store'])->name('veiculo.store');
+
+Route::get('/veiculo',  [App\Http\Controllers\VeiculoController::class, 'index'])->name('veiculo.index');

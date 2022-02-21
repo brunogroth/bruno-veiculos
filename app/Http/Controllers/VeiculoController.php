@@ -22,5 +22,13 @@ class VeiculoController extends Controller
         ]);
         
         $veiculo = Veiculo::insert($request->except('_token'));
+
+        return back();
+    }
+
+    public function index(){
+
+        $veiculos = Veiculo::get();
+        return view('veiculo.index', compact('veiculos')); 
     }
 }
