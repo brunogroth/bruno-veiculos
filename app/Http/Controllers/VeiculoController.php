@@ -23,12 +23,12 @@ class VeiculoController extends Controller
         
         $veiculo = Veiculo::insert($request->except('_token'));
 
-        return back();
+        return redirect()->route('veiculo.index');
     }
 
     public function index(){
 
-        $veiculos = Veiculo::get();
+        $veiculos = Veiculo::simplepaginate(5);
         return view('veiculo.index', compact('veiculos')); 
     }
 }

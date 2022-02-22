@@ -23,9 +23,10 @@
             <li class="nav-item">
               <a class="nav-link" href="/veiculo/create">Create</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Disabled</a>
-            </li>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
           </ul>
     </nav>
     <div class="container">
@@ -56,8 +57,13 @@
             <td>{{$veiculo->valor_venda}}</td>
         </tr>
         @endforeach
+        
+
         </tbody>
       </table>
+      <div class="col text-center">
+        {{ $veiculos->links() }}
+       </div>
     </div>
 
 </body>
