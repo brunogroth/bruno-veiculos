@@ -26,9 +26,18 @@ class VeiculoController extends Controller
         return redirect()->route('veiculo.index');
     }
 
-    public function index(){
+    public function index(Request $request){
 
         $veiculos = Veiculo::simplepaginate(5);
-        return view('veiculo.index', compact('veiculos')); 
+        
+
+        $search = $request->query('search');
+        if(!empty($search)){
+
+            $veiculos = Veiculo::where(
+                'marca', 'like', '%'. $search .'%' 
+            )->simplepaginate(5);
+        }
+        return view('veiculo.index', compact('veiculos', 'search')); 
     }
 }

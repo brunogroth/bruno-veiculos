@@ -23,16 +23,23 @@
             <li class="nav-item">
               <a class="nav-link" href="/veiculo/create">Create</a>
             </li>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-              </form>
+
           </ul>
     </nav>
     <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-3">
+                <form class="form-inline my-2 my-lg-0 text-end md-8" action="{{route('veiculo.index')}}" method="get">
+                    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container">
         <div class="row g-12 mt-3">
             <div class="col-auto">
-                <h1> Consulte seus veículos </h1>
+                <h1> Veículos </h1>
             </div>
         </div>
     <table class="table">
@@ -62,7 +69,7 @@
         </tbody>
       </table>
       <div class="col text-center">
-        {{ $veiculos->links() }}
+        {{ $veiculos->appends(['search'=>$search])->links() }}
        </div>
     </div>
 
