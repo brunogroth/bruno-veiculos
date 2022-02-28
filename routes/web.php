@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/veiculo',  [App\Http\Controllers\VeiculoController::class, 'index'])->name('veiculo.index');
+
 Route::get('/veiculo/create', [App\Http\Controllers\VeiculoController::class, 'create'])->name('veiculo.create');
 
 Route::post('/veiculo/store', [App\Http\Controllers\VeiculoController::class, 'store'])->name('veiculo.store');
 
-Route::get('/veiculo',  [App\Http\Controllers\VeiculoController::class, 'index'])->name('veiculo.index');
+Route::get('/veiculo/{id}/edit',  [App\Http\Controllers\VeiculoController::class, 'edit'])->name('veiculo.edit');
+
+Route::post('/veiculo/{id}/update', [App\Http\Controllers\VeiculoController::class, 'update'])->name('veiculo.update');

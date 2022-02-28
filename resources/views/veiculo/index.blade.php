@@ -36,6 +36,14 @@
             </div>
         </div>
     </div>
+    @if($errors->any())
+      <div class="alert alert-danger">
+          @foreach($errors->all() as $error)
+          <p>{{ $error }}</p>
+          
+          @endforeach
+      </div>
+    @endif
     <div class="container">
         <div class="row g-12 mt-3">
             <div class="col-auto">
@@ -58,11 +66,13 @@
         @foreach ($veiculos as $veiculo)
         <tr>
             <th scope="row">{{$veiculo->id}}</th>
-            <td>{{$veiculo->placa}}</td>
+            <td><span class="plate">{{$veiculo->placa}}</span></td>
             <td>{{$veiculo->marca}}</td>
             <td>{{$veiculo->modelo}}</td>
-            <td>{{$veiculo->valor_venda}}</td>
-        </tr>
+            <td>R$<span class="money">{{$veiculo->valor_venda}}</span></td>
+            <td><a href="{{route('veiculo.edit', $veiculo->id)}}" class="btn btn-warning">Editar</button></td>
+            <td><button class="btn btn-danger"><img src="">Excluir</button></td>
+          </tr>
         @endforeach
         
 
@@ -73,5 +83,15 @@
        </div>
     </div>
 
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script>
+        $(function(){
+            $('.money').mask('000.000.000.000.000,00', {reverse: true});
+            $('.plate').mask('SSS-0A00');
+          });
+    </script>
 </body>
 </html>

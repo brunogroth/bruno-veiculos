@@ -40,4 +40,32 @@ class VeiculoController extends Controller
         }
         return view('veiculo.index', compact('veiculos', 'search')); 
     }
+
+    public function edit(Request $request, $id){
+       
+        $veiculo = Veiculo::find($id);
+
+        return view('veiculo.edit', compact('veiculo'));
+
+    }
+    public function update(Request $request, $id){
+
+
+        $veiculo = Veiculo::find($id);
+        $valor_venda = str_replace('.', '', $request->valor_venda);
+        $valor_venda = str_replace(',','.', $valor_venda);
+        $request->merge([
+            'placa' => str_replace( '-', '', $request->placa),
+            'valor_venda' => $valor_venda
+        ]);
+
+        $veiculo->update([
+            'placa'=>$request->placa,
+            'marca'=>$request->marca,
+            'modelo'=>$request->modelo,
+            'valor_venda'=>$request->valor_venda
+            ]);
+        
+        return redirect()->route('veiculo.index');
+    }
 }
