@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('veiculo.index');
 });
 
 Route::get('/veiculo',  [App\Http\Controllers\VeiculoController::class, 'index'])->name('veiculo.index');
@@ -26,3 +26,5 @@ Route::post('/veiculo/store', [App\Http\Controllers\VeiculoController::class, 's
 Route::get('/veiculo/{id}/edit',  [App\Http\Controllers\VeiculoController::class, 'edit'])->name('veiculo.edit');
 
 Route::post('/veiculo/{id}/update', [App\Http\Controllers\VeiculoController::class, 'update'])->name('veiculo.update');
+
+Route::delete('veiculo/{id}/destroy', [App\Http\Controllers\VeiculoController::class, 'destroy'])->name('veiculo.destroy');

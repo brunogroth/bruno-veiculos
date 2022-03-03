@@ -71,7 +71,11 @@
             <td>{{$veiculo->modelo}}</td>
             <td>R$<span class="money">{{$veiculo->valor_venda}}</span></td>
             <td><a href="{{route('veiculo.edit', $veiculo->id)}}" class="btn btn-warning">Editar</button></td>
-            <td><button class="btn btn-danger"><img src="">Excluir</button></td>
+            <td><form action="{{route('veiculo.destroy', $veiculo->id)}}" method="POST">
+              @csrf
+              {{ method_field('DELETE') }}
+              <button type="submit" class="btn btn-danger"><img src="">Excluir</button>
+            </form></td>
           </tr>
         @endforeach
         
@@ -93,5 +97,10 @@
             $('.plate').mask('SSS-0A00');
           });
     </script>
+    <script>
+      new Noty({
+        text: 'Some notification text',
+      }).show();
+  </script>
 </body>
 </html>

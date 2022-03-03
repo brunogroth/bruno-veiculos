@@ -36,6 +36,8 @@ class VeiculoController extends Controller
 
             $veiculos = Veiculo::where(
                 'marca', 'like', '%'. $search .'%' 
+            )->orWhere('placa', 'like', '%'. $search .'%'
+            )->orWhere('modelo', 'like', '%'. $search .'%'
             )->simplepaginate(5);
         }
         return view('veiculo.index', compact('veiculos', 'search')); 
@@ -67,5 +69,14 @@ class VeiculoController extends Controller
             ]);
         
         return redirect()->route('veiculo.index');
+    }
+    
+
+    public function destroy(Request $request, $id){
+       
+        $veiculo = Veiculo::destroy($id);
+
+        return redirect()->route('veiculo.index');
+
     }
 }
