@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Veiculo;
-
+use App\Http\Requests\StoreVeiculo;
 class VeiculoController extends Controller
 {
     public function create() {
@@ -12,7 +12,7 @@ class VeiculoController extends Controller
     } 
 
 
-    public function store(Request $request){
+    public function store(StoreVeiculo $request){
 
         $valor_venda = str_replace('.', '', $request->valor_venda);
         $valor_venda = str_replace(',','.', $valor_venda);
@@ -23,7 +23,7 @@ class VeiculoController extends Controller
         
         $veiculo = Veiculo::insert($request->except('_token'));
 
-        return redirect()->route('veiculo.index');
+        return redirect()->route('veiculo.index')->with('status', 'Veículo criado com sucesso!');;
     }
 
     public function index(Request $request){
@@ -68,7 +68,7 @@ class VeiculoController extends Controller
             'valor_venda'=>$request->valor_venda
             ]);
         
-        return redirect()->route('veiculo.index');
+        return redirect()->route('veiculo.index')->with('status', 'Veículo atualizado com sucesso!');
     }
     
 
@@ -76,7 +76,7 @@ class VeiculoController extends Controller
        
         $veiculo = Veiculo::destroy($id);
 
-        return redirect()->route('veiculo.index');
+        return redirect()->route('veiculo.index')->with('status', 'Veículo excluído com sucesso!');;
 
     }
 }

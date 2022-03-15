@@ -45,13 +45,15 @@
       </div>
     @endif
     <div class="container">
-        <div class="row g-12 mt-3">
+      <div class="row g-12 mt-3">
+          @if(Session::has('status'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('status') }}</p>
+          @endif
             <div class="col-auto">
                 <h1> Veículos </h1>
             </div>
         </div>
     <table class="table">
-
         <thead>
           <tr>
             <th scope="col">#</th>
@@ -78,15 +80,13 @@
             </form></td>
           </tr>
         @endforeach
-        
-
+      
         </tbody>
       </table>
       <div class="col text-center">
         {{ $veiculos->appends(['search'=>$search])->links() }}
        </div>
     </div>
-
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
@@ -97,10 +97,11 @@
             $('.plate').mask('SSS-0A00');
           });
     </script>
-    <script>
+    {{-- <script>
       new Noty({
         text: 'Some notification text',
       }).show();
-  </script>
+  </script> --}}
+
 </body>
 </html>
