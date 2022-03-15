@@ -11,7 +11,6 @@ class VeiculoController extends Controller
         return view('veiculo.create');
     } 
 
-
     public function store(StoreVeiculo $request){
 
         $valor_venda = str_replace('.', '', $request->valor_venda);
@@ -50,7 +49,7 @@ class VeiculoController extends Controller
         return view('veiculo.edit', compact('veiculo'));
 
     }
-    public function update(Request $request, $id){
+    public function update(StoreVeiculo $request, $id){
 
 
         $veiculo = Veiculo::find($id);

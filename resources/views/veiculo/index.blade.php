@@ -30,8 +30,10 @@
         <div class="row justify-content-end">
             <div class="col-3">
                 <form class="form-inline my-2 my-lg-0 text-end md-8" action="{{route('veiculo.index')}}" method="get">
-                    <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <div style="display:inline-flex">
+                      <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0 pb-2" type="submit"><img width="16px" src="{{URL::asset('/images/search.png')}}"></button>
+                    </div>
                 </form>
             </div>
         </div>
@@ -61,6 +63,8 @@
             <th scope="col">Marca</th>
             <th scope="col">Modelo</th>
             <th scope="col">Valor de Venda</th>
+            <th scope="col">Editar</th>
+            <th scope="col">Excluir</th>
           </tr>
         </thead>
        
@@ -72,11 +76,11 @@
             <td>{{$veiculo->marca}}</td>
             <td>{{$veiculo->modelo}}</td>
             <td>R$<span class="money">{{$veiculo->valor_venda}}</span></td>
-            <td><a href="{{route('veiculo.edit', $veiculo->id)}}" class="btn btn-warning">Editar</button></td>
+            <td><a href="{{route('veiculo.edit', $veiculo->id)}}" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></button></td>
             <td><form action="{{route('veiculo.destroy', $veiculo->id)}}" method="POST">
               @csrf
               {{ method_field('DELETE') }}
-              <button type="submit" class="btn btn-danger"><img src="">Excluir</button>
+              <button type="submit" class="btn btn-danger">Excluir</button>
             </form></td>
           </tr>
         @endforeach
