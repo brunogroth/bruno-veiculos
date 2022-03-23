@@ -14,17 +14,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect()->route('veiculo.index');
+    return redirect('/login');
 });
 
-Route::get('/veiculo',  [App\Http\Controllers\VeiculoController::class, 'index'])->name('veiculo.index');
+Route::get('/veiculo',  [App\Http\Controllers\VeiculoController::class, 'index'])->middleware(['auth'])->name('veiculo.index');
 
-Route::get('/veiculo/create', [App\Http\Controllers\VeiculoController::class, 'create'])->name('veiculo.create');
+Route::get('/veiculo/create', [App\Http\Controllers\VeiculoController::class, 'create'])->middleware(['auth'])->name('veiculo.create');
 
-Route::post('/veiculo/store', [App\Http\Controllers\VeiculoController::class, 'store'])->name('veiculo.store');
+Route::post('/veiculo/store', [App\Http\Controllers\VeiculoController::class, 'store'])->middleware(['auth'])->name('veiculo.store');
 
-Route::get('/veiculo/{id}/edit',  [App\Http\Controllers\VeiculoController::class, 'edit'])->name('veiculo.edit');
+Route::get('/veiculo/{id}/edit',  [App\Http\Controllers\VeiculoController::class, 'edit'])->middleware(['auth'])->name('veiculo.edit');
 
-Route::post('/veiculo/{id}/update', [App\Http\Controllers\VeiculoController::class, 'update'])->name('veiculo.update');
+Route::post('/veiculo/{id}/update', [App\Http\Controllers\VeiculoController::class, 'update'])->middleware(['auth'])->name('veiculo.update');
 
-Route::delete('veiculo/{id}/destroy', [App\Http\Controllers\VeiculoController::class, 'destroy'])->name('veiculo.destroy');
+Route::delete('veiculo/{id}/destroy', [App\Http\Controllers\VeiculoController::class, 'destroy'])->middleware(['auth'])->name('veiculo.destroy');
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
+
