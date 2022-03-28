@@ -11,19 +11,19 @@
         <!-- Validation Errors -->
         <x-auth-validation-errors class="mb-4" :errors="$errors" />
 
-        <div class="form-signin text-center">
-            <form class="row g-3" method="POST" action="{{ route('login') }}">
+        <div class="form-group d-flex justify-content-center">
+            <form class="px-4 py-3" method="POST" action="{{ route('login') }}">
                 @csrf
 
                 <!-- Email Address -->
-                <div class="col-5">
+                <div>
                     <x-label for="email" :value="__('Email')" />
 
                     <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
                 </div>
 
                 <!-- Password -->
-                <div class="col-5 mt-4">
+                <div class="mt-4">
                     <x-label for="password" :value="__('Password')" />
 
                     <x-input id="password" class="block mt-1 w-full"
@@ -46,9 +46,8 @@
                             {{ __('Forgot your password?') }}
                         </a>
                     @endif
-
                     <x-button class="ml-3">
-                        {{ __('Log in') }}
+                        {{ __(' Log in') }}
                     </x-button>
                 </div>
             </form>
