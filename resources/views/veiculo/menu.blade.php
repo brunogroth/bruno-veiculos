@@ -7,10 +7,13 @@
             </ul>
           </li>
         <li class="nav-item">
-            <a class="nav-link" href="/veiculo">Home</a>
+            <a class="nav-link" href="{{ route('veiculo.index')}}">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/veiculo/create">Create</a>
+          <a class="nav-link" href="{{ route('veiculo.create')}}">Create</a>
+        </li>
+        <li class="nav-item justify-content-end">
+          <a class="nav-link btn btn-danger" style="color:white" href="#">Logoff</a>
         </li>
       </ul>
 </nav>
