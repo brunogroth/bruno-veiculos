@@ -13,7 +13,9 @@
           <a class="nav-link" href="{{ route('veiculo.create')}}">Create</a>
         </li>
         <li class="nav-item justify-content-end">
-          <a class="nav-link btn btn-danger" style="color:white" href="#">Logoff</a>
+          <form action="destroy" method="{{route('logout')}}">
+          <button class="nav-link btn btn-danger" type="submit" style="color:white">Logoff</button>
+          </form>
         </li>
       </ul>
 </nav>
