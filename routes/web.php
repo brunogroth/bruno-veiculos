@@ -29,9 +29,12 @@ Route::post('/veiculo/{id}/update', [App\Http\Controllers\VeiculoController::cla
 
 Route::delete('veiculo/{id}/destroy', [App\Http\Controllers\VeiculoController::class, 'destroy'])->middleware(['auth'])->name('veiculo.destroy');
 
+Route::get('/marcas', [App\Http\Controllers\MarcaController::class, 'index'])->middleware('auth')->name('marca.index');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
 

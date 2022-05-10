@@ -58,7 +58,7 @@
             <td>{{$veiculo->marca}}</td>
             <td>{{$veiculo->modelo}}</td>
             <td>R$<span class="money">{{$veiculo->valor_venda}}</span></td>
-            <td><a href="{{route('veiculo.edit', $veiculo->id)}}" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></button></td>
+            <td><a href="{{route('veiculo.edit', $veiculo->id)}}" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td>
             <td><form action="{{route('veiculo.destroy', $veiculo->id)}}" method="POST">
               @csrf
               {{ method_field('DELETE') }}

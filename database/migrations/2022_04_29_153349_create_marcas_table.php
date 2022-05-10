@@ -15,7 +15,8 @@ class CreateMarcasTable extends Migration
     {
         Schema::create('marcas', function (Blueprint $table) {
             $table->id();
-            $table->char('marca', 50);
+            $table->char('descricao', 50);
+            $table->char('slug', 50);
             $table->timestamps();
         });
     }
