@@ -14,10 +14,10 @@
             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Marca</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ route('marca.index')}}">Consultar Marcas</a></li>
-              <li><a class="dropdown-item" href="{{ route('marca.index')}}">Cadastrar Marca</a></li>
+              <li><a class="dropdown-item" href="{{ route('marca.create')}}">Cadastrar Marca</a></li>
             </ul>
           </li>
-        <li class="nav-item justify-content-end">
+        <li class="nav-item">
           <form action="destroy" method="{{route('logout')}}">
           <button class="nav-link btn btn-danger" type="submit" style="color:white">Logoff</button>
           </form>

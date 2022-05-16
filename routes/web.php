@@ -17,6 +17,8 @@ Route::get('/', function () {
     return redirect('/login');
 });
 
+//Veiculo
+
 Route::get('/veiculo',  [App\Http\Controllers\VeiculoController::class, 'index'])->middleware(['auth'])->name('veiculo.index');
 
 Route::get('/veiculo/create', [App\Http\Controllers\VeiculoController::class, 'create'])->middleware(['auth'])->name('veiculo.create');
@@ -29,7 +31,13 @@ Route::post('/veiculo/{id}/update', [App\Http\Controllers\VeiculoController::cla
 
 Route::delete('veiculo/{id}/destroy', [App\Http\Controllers\VeiculoController::class, 'destroy'])->middleware(['auth'])->name('veiculo.destroy');
 
+//Marcas
+
 Route::get('/marcas', [App\Http\Controllers\MarcaController::class, 'index'])->middleware('auth')->name('marca.index');
+
+Route::get('/marca/create', [App\Http\Controllers\MarcaController::class, 'create'])->middleware('auth')->name('marca.create');
+
+Route::post('/marca/store', [App\Http\Controllers\MarcaController::class, 'store'])->middleware(['auth'])->name('marca.store');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
