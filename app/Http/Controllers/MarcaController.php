@@ -8,8 +8,18 @@ use App\Http\Requests\StoreMarca;
 use Illuminate\Support\Str;
 class MarcaController extends Controller
 {
-    public function index(){
-        return view('marca.index');
+    public function index(Request $request){
+
+        $marcas = Marca::simplepaginate(5);
+
+        $search = $request->query('search');
+        if(!empty($search)){
+
+            $marcas = Marca::where(
+                'descricao', 'like', '%'. $search .'%' 
+            )->simplepaginate(5);
+        }
+        return view('marca.index', compact('marcas', 'search')); 
     }
 
     public function create(){
