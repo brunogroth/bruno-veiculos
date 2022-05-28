@@ -54,14 +54,20 @@
           <tr>
               <th scope="row">{{$marca->id}}</th>
               <td>{{$marca->descricao}}</td>
-             <td><a href=" #{{-- {{route('veiculo.edit', $veiculo->id)}}--}} " class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
-              <td><form action="{{-- {{route('veiculo.destroy', $veiculo->id)}}--}}" method="POST">
+             <td><a href="{{route('marca.edit', $marca->id)}}" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
+              <td><form action="{{route('marca.destroy', $marca->id)}}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
                 <button type="submit" class="btn btn-danger">Excluir</button>
               </form></td>
             </tr>
           @endforeach
+        </tbody>
+      </table>
+        <div class="col text-center">
+          {{$marcas->appends(['search'=>$search])->links() }}
+         </div>
+      </div>
 @endsection
     
 @push('scripts')

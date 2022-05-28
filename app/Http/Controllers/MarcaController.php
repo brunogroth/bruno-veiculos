@@ -36,4 +36,37 @@ class MarcaController extends Controller
         Marca::insert($request->except('_token'));
         return redirect()->route('marca.index')->with('status', 'Marca criada com sucesso!');;
     }
+
+    public function edit(Request $request, $id){
+       
+        $marca = Marca::find($id);
+
+        return view('marca.edit', compact('marca'));
+
+    }
+
+    public function update(StoreMarca $request, $id){
+
+        $marca = Marca::find($id);
+        $slug = Str::of($request->descricao)->slug('-');
+        $request->merge([
+            'slug' => $slug
+        ]);
+       
+
+        $marca->update([
+            'descricao'=>$request->descricao,
+            'slug'=>$request->slug,
+            ]);
+        
+        return redirect()->route('marca.index')->with('status', 'Marca atualizada com sucesso!');
+    }
+
+    public function destroy(Request $request, $id){
+       
+        Marca::destroy($id);
+
+        return redirect()->route('marca.index')->with('status', 'Marca excluída com sucesso!');;
+
+    }
 }

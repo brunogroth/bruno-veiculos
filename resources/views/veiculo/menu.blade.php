@@ -18,8 +18,9 @@
             </ul>
           </li>
         <li class="nav-item">
-          <form action="destroy" method="{{route('logout')}}">
-          <button class="nav-link btn btn-danger" type="submit" style="color:white">Logoff</button>
+          <form action="{{route('logout')}}" method="post">
+            @csrf
+            <button class="nav-link btn btn-danger" type="submit" style="color:white">Logoff</button>
           </form>
         </li>
       </ul>

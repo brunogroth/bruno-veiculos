@@ -39,6 +39,12 @@ Route::get('/marca/create', [App\Http\Controllers\MarcaController::class, 'creat
 
 Route::post('/marca/store', [App\Http\Controllers\MarcaController::class, 'store'])->middleware(['auth'])->name('marca.store');
 
+Route::get('/marca/{id}/edit',  [App\Http\Controllers\MarcaController::class, 'edit'])->middleware(['auth'])->name('marca.edit');
+
+Route::post('/marca/{id}/update', [App\Http\Controllers\MarcaController::class, 'update'])->middleware(['auth'])->name('marca.update');
+
+Route::delete('marca/{id}/destroy', [App\Http\Controllers\MarcaController::class, 'destroy'])->middleware(['auth'])->name('marca.destroy');
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');

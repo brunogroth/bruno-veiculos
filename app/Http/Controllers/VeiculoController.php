@@ -51,7 +51,6 @@ class VeiculoController extends Controller
     }
     public function update(StoreVeiculo $request, $id){
 
-
         $veiculo = Veiculo::find($id);
         $valor_venda = str_replace('.', '', $request->valor_venda);
         $valor_venda = str_replace(',','.', $valor_venda);
