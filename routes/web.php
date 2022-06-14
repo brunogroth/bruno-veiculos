@@ -33,7 +33,7 @@ Route::delete('veiculo/{id}/destroy', [App\Http\Controllers\VeiculoController::c
 
 //Marcas
 
-Route::get('/marcas', [App\Http\Controllers\MarcaController::class, 'index'])->middleware('auth')->name('marca.index');
+Route::get('/marca', [App\Http\Controllers\MarcaController::class, 'index'])->middleware('auth')->name('marca.index');
 
 Route::get('/marca/create', [App\Http\Controllers\MarcaController::class, 'create'])->middleware('auth')->name('marca.create');
 
@@ -44,6 +44,16 @@ Route::get('/marca/{id}/edit',  [App\Http\Controllers\MarcaController::class, 'e
 Route::post('/marca/{id}/update', [App\Http\Controllers\MarcaController::class, 'update'])->middleware(['auth'])->name('marca.update');
 
 Route::delete('marca/{id}/destroy', [App\Http\Controllers\MarcaController::class, 'destroy'])->middleware(['auth'])->name('marca.destroy');
+
+//Modelo
+
+Route::get('/modelo', [App\Http\Controllers\ModeloController::class, 'index'])->middleware('auth')->name('modelo.index');
+
+Route::get('/modelo/create', [App\Http\Controllers\ModeloController::class, 'create'])->middleware('auth')->name('modelo.create');
+
+Route::post('/modelo/store', [App\Http\Controllers\ModeloController::class, 'store'])->middleware(['auth'])->name('modelo.store');
+
+//
 
 Route::get('/dashboard', function () {
     return view('dashboard');

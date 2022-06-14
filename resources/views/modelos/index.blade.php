@@ -1,0 +1,115 @@
+@extends('layout.template', ['title' => 'Home - Bruno Veículos'])
+
+@push('styles')
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+@endpush
+
+@section('content')
+    <div class="container">
+        <div class="row justify-content-end">
+            <div class="col-3">
+                <form class="form-inline my-2 my-lg-0 text-end md-8" action="{{route('veiculo.index')}}" method="get">
+                    <div style="display:inline-flex">
+                      <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search" aria-label="Search">
+                      <button class="btn btn-outline-success my-2 my-sm-0 pb-2" type="submit"><img width="16px" src="{{URL::asset('/images/search.png')}}"></button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @if($errors->any())
+      <div class="alert alert-danger">
+          @foreach($errors->all() as $error)
+          <p>{{ $error }}</p>
+          
+          @endforeach
+      </div>
+    @endif
+    <div class="container">
+      <div class="row g-12 mt-3">
+          @if(Session::has('status'))
+            <p class="alert {{ Session::get('alert-class', 'alert-info') }}">{{ Session::get('status') }}</p>
+          @endif
+            <div class="col-auto">
+                <h1> Modelos </h1>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Marca</th>
+                <th scope="col">Modelo</th>
+                <th scope="col">Editar</th>
+                <th scope="col">Excluir</th>
+              </tr>
+            </thead>
+           
+            <tbody>
+                <tr>
+                    <td scope="col">1</th>
+                    <td scope="col">Fiat</th>
+                    <td scope="col">Argo</th>
+                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
+                    <td><form action="#" method="POST">
+                          @csrf
+                          {{ method_field('DELETE') }}
+                          <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form></td>
+                </tr>
+                <tr>
+                    <td scope="col">x</th>
+                    <td scope="col">Fiat</th>
+                    <td scope="col">Bravo</th>
+                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
+                    <td><form action="#" method="POST">
+                          @csrf
+                          {{ method_field('DELETE') }}
+                          <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form></td>
+                </tr>
+                <tr>
+                    <td scope="col">x</th>
+                    <td scope="col">Volksvagen</th>
+                    <td scope="col">Amarok</th>
+                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
+                    <td><form action="#" method="POST">
+                          @csrf
+                          {{ method_field('DELETE') }}
+                          <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form></td>
+                </tr>
+                <tr>
+                    <td scope="col">x</th>
+                    <td scope="col">Volksvagen</th>
+                    <td scope="col">Bora</th>
+                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
+                    <td><form action="#" method="POST">
+                          @csrf
+                          {{ method_field('DELETE') }}
+                          <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form></td>
+                </tr>
+                <tr>
+                    <td scope="col">x</th>
+                    <td scope="col">Toyota</th>
+                    <td scope="col">Corolla</th>
+                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
+                    <td><form action="#" method="POST">
+                          @csrf
+                          {{ method_field('DELETE') }}
+                          <button type="submit" class="btn btn-danger">Excluir</button>
+                        </form></td>
+                </tr>
+            </tbody>
+        </table>
+@endsection
+    
+@push('scripts')
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+@endpush

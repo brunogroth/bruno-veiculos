@@ -11,10 +11,17 @@
             </ul>
           </li>
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Marca</a>
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Marcas</a>
             <ul class="dropdown-menu">
               <li><a class="dropdown-item" href="{{ route('marca.index')}}">Consultar Marcas</a></li>
               <li><a class="dropdown-item" href="{{ route('marca.create')}}">Cadastrar Marca</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Modelos</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="{{ route('modelo.index')}}">Consultar Modelos</a></li>
+              <li><a class="dropdown-item" href="{{ route('modelo.create')}}">Cadastrar Modelos</a></li>
             </ul>
           </li>
         <li class="nav-item">
