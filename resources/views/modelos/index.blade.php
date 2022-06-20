@@ -49,10 +49,11 @@
             </thead>
            
             <tbody>
+              @foreach($modelos as $modelo)
                 <tr>
-                    <td scope="col">1</th>
-                    <td scope="col">Fiat</th>
-                    <td scope="col">Argo</th>
+                    <td scope="col">{{$modelo->id}}</th>
+                    <td scope="col">{{$modelo->marca}}</th>
+                    <td scope="col">{{$modelo->descricao}}</th>
                     <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
                     <td><form action="#" method="POST">
                           @csrf
@@ -60,50 +61,7 @@
                           <button type="submit" class="btn btn-danger">Excluir</button>
                         </form></td>
                 </tr>
-                <tr>
-                    <td scope="col">x</th>
-                    <td scope="col">Fiat</th>
-                    <td scope="col">Bravo</th>
-                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
-                    <td><form action="#" method="POST">
-                          @csrf
-                          {{ method_field('DELETE') }}
-                          <button type="submit" class="btn btn-danger">Excluir</button>
-                        </form></td>
-                </tr>
-                <tr>
-                    <td scope="col">x</th>
-                    <td scope="col">Volksvagen</th>
-                    <td scope="col">Amarok</th>
-                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
-                    <td><form action="#" method="POST">
-                          @csrf
-                          {{ method_field('DELETE') }}
-                          <button type="submit" class="btn btn-danger">Excluir</button>
-                        </form></td>
-                </tr>
-                <tr>
-                    <td scope="col">x</th>
-                    <td scope="col">Volksvagen</th>
-                    <td scope="col">Bora</th>
-                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
-                    <td><form action="#" method="POST">
-                          @csrf
-                          {{ method_field('DELETE') }}
-                          <button type="submit" class="btn btn-danger">Excluir</button>
-                        </form></td>
-                </tr>
-                <tr>
-                    <td scope="col">x</th>
-                    <td scope="col">Toyota</th>
-                    <td scope="col">Corolla</th>
-                    <td><a href="#" class="btn btn-warning pb-2"><img width="16px" src="{{URL::asset('/images/edit.png')}}"></a></td> 
-                    <td><form action="#" method="POST">
-                          @csrf
-                          {{ method_field('DELETE') }}
-                          <button type="submit" class="btn btn-danger">Excluir</button>
-                        </form></td>
-                </tr>
+                @endforeach
             </tbody>
         </table>
 @endsection

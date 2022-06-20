@@ -10,8 +10,17 @@ use Illuminate\Support\Str;
 
 class ModeloController extends Controller
 {
-    public function index(){
-        return view('modelos.index');
+    public function index(Request $request){
+        $modelos = Modelo::simplepaginate(5);
+
+        $search = $request->query('search');
+        if(!empty($search)){
+
+            $modelos = Modelo::where(
+                'descricao', 'like', '%'. $search .'%' 
+            )->simplepaginate(5);
+        }
+        return view('modelos.index', compact('modelos', 'search')); 
     }
 
     public function create(){
